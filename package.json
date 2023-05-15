@@ -1,0 +1,18 @@
+{
+  "name": "das",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "auth": "ts-node ./methods/getAssetsByAuthority",
+    "creator": "ts-node ./methods/getAssetsByCreator",
+    "group": "ts-node ./methods/getAssetsByGroup",
+    "owner": "ts-node ./methods/getAssetsByOwner",
+    "asset": "ts-node ./methods/getAsset.ts",
+    "proof": "ts-node ./methods/getAssetProof.ts",
+    "search": "ts-node ./methods/searchAssets.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

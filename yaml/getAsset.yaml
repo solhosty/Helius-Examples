@@ -1,0 +1,260 @@
+openapi: 3.0.0
+info:
+  title: Helius API
+  version: 1.0.0
+servers:
+  - url: https://rpc.helius.xyz
+paths:
+  /?api-key=<api_key>:
+    post:
+      tags: 
+        -RPC
+      summary: getAsset
+      operationId: rpc
+      parameters: 
+        - name: api-key
+          in: query
+          description: The API key.
+          required: true
+          schema:
+            type: string
+            example: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum: ["2.0"]
+                  description: The version of the JSON-RPC protocol.
+                  required: true
+                id:
+                  type: string
+                  description: An ID to identify the request.
+                  required: true
+                method:
+                  type: string
+                  enum: ["getAsset"]
+                  description: The name of the DAS method to invoke.
+                  required: true
+                params:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of the asset to retrieve.
+                      example: "string"
+                      required: true
+                  required:
+                    - id
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  assets:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        description: The total number of assets found.
+                        example: 2
+                      limit:
+                        type: integer
+                        description: The maximum number of assets requested.
+                        example: 100
+                      page:
+                        type: integer
+                        description: The current page of results.
+                        example: 0
+                      items:
+                        type: array
+                        description: An array of assets.
+                        items:
+                          type: object
+                          properties:
+                            interface:
+                              type: string
+                              description: The interface of the asset.
+                              example: "string"
+                            id:
+                              type: string
+                              description: The ID of the asset.
+                              example: "string"
+                            content:
+                              type: object
+                              description: The content of the asset.
+                              properties:
+                                $schema:
+                                  type: string
+                                json_uri:
+                                  type: string
+                                files:
+                                  type: array
+                                  items:
+                                    type: object
+                                items:
+                                  type: object
+                                metadata:
+                                  type: object
+                                  properties:
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                    description:
+                                      type: string
+                                    name:
+                                      type: string
+                                    symbol:
+                                      type: string
+                                links:
+                                  type: object
+                                  properties:
+                                    external_url:
+                                      type: string
+                                      nullable: true
+                            authorities:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                scopes:
+                                  type: array
+                                  items:
+                                    type: object
+                                items:
+                                  type: string  
+                            compression:
+                              type: object
+                              properties:
+                                eligible:
+                                  type: boolean
+                                compressed:
+                                  type: boolean
+                                data_hash:
+                                  type: string
+                                creator_hash:
+                                  type: string
+                                asset_hash:
+                                  type: string
+                                tree:
+                                  type: string
+                                seq:
+                                  type: integer
+                                leaf_id:
+                                  type: integer 
+                            grouping:
+                              type: object
+                              properties:
+                                group_key:
+                                  type: string
+                                group_value:
+                                  type: string 
+                            royalty:
+                              type: object
+                              properties:
+                                royalty_model:
+                                  type: string
+                                target:
+                                  type: string
+                                  nullable: true
+                                percent:
+                                  type: number
+                                basis_points:
+                                  type: integer
+                                primary_sale_happened:
+                                  type: boolean
+                                locked:
+                                  type: boolean
+                            creators:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                share:
+                                  type: integer
+                                verified:
+                                  type: boolean
+                            ownership:
+                              type: object
+                              properties:
+                                frozen:
+                                  type: boolean
+                                delegated:
+                                  type: boolean
+                                delegate:
+                                  type: string
+                                  nullable: true
+                                ownership_model:
+                                  type: string
+                                owner:
+                                  type: string
+                                supply:
+                                  type: string
+                                  nullable: true
+                                mutable:
+                                  type: boolean
+                            
+        200 No Content:
+          description: 'No content.'
+        400:
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+          
+        401:
+          description: Unauthorized request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        403:
+          description: Request was forbidden.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        404:
+          description: The specified resource was not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        429:
+          description: Exceeded rate limit..
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        500:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string

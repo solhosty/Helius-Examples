@@ -1,0 +1,142 @@
+components:
+  schemas:
+    CustomResponse:
+      type: object
+      properties:
+        interface:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/Content'
+        authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Authority'
+        compression:
+          $ref: '#/components/schemas/Compression'
+        grouping:
+          type: array
+          items:
+            $ref: '#/components/schemas/Grouping'
+        royalty:
+          $ref: '#/components/schemas/Royalty'
+        creators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
+        ownership:
+          $ref: '#/components/schemas/Ownership'
+        supply:
+          type: string
+          nullable: true
+        mutable:
+          type: boolean
+    Content:
+      type: object
+      properties:
+        $schema:
+          type: string
+        json_uri:
+          type: string
+        files:
+          type: array
+          items:
+            type: object
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        links:
+          $ref: '#/components/schemas/Links'
+    Authority:
+      type: object
+      properties:
+        address:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+    Compression:
+      type: object
+      properties:
+        eligible:
+          type: boolean
+        compressed:
+          type: boolean
+        data_hash:
+          type: string
+        creator_hash:
+          type: string
+        asset_hash:
+          type: string
+        tree:
+          type: string
+        seq:
+          type: integer
+        leaf_id:
+          type: integer
+    Grouping:
+      type: object
+      properties:
+        group_key:
+          type: string
+        group_value:
+          type: string
+    Royalty:
+      type: object
+      properties:
+        royalty_model:
+          type: string
+        target:
+          type: string
+          nullable: true
+        percent:
+          type: number
+        basis_points:
+          type: integer
+        primary_sale_happened:
+          type: boolean
+        locked:
+          type: boolean
+    Creator:
+      type: object
+      properties:
+        address:
+          type: string
+        share:
+          type: integer
+        verified:
+          type: boolean
+    Ownership:
+      type: object
+      properties:
+        frozen:
+          type: boolean
+        delegated:
+          type: boolean
+        delegate:
+          type: string
+          nullable: true
+        ownership_model:
+          type: string
+        owner:
+          type: string
+    Metadata:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            type: object
+        description:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+    Links:
+      type: object
+      properties:
+        external_url:
+          type: string
+          nullable: true
