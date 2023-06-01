@@ -6,13 +6,21 @@
   "scripts": {
     "auth": "ts-node ./methods/getAssetsByAuthority",
     "creator": "ts-node ./methods/getAssetsByCreator",
-    "group": "ts-node ./methods/getAssetsByGroup",
+    "group": "ts-node ./methods/group.js",
     "owner": "ts-node ./methods/getAssetsByOwner",
     "asset": "ts-node ./methods/getAsset.ts",
     "proof": "ts-node ./methods/getAssetProof.ts",
     "search": "ts-node ./methods/searchAssets.ts",
+    "token": "node ./rpc/getTokenAccountsByOwner.js",
+    "program": "node ./rpc/getProgramAccounts.js",
+    "multiple": "node ./rpc/getMultipleAccounts.js",  
+    "account": "node ./rpc/getAccountInfo.js",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
 }
