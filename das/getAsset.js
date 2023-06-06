@@ -1,4 +1,4 @@
-const url = `https://icarus.helius.xyz/?api-key=11620a64-313a-47e1-b199-67d9a3b4b0d8`;
+const url = `https://icarus.helius.xyz/?api-key=98db8a8f-a355-4d5d-9217-bb846fa10192`;
 
 const getAsset = async () => {
   const response = await fetch(url, {
@@ -9,19 +9,15 @@ const getAsset = async () => {
     body: JSON.stringify({
       jsonrpc: '2.0',
       id: 'my-id',
-      method: 'getAssetByOwner',
+      method: 'getAsset',
       params: {
-        ownerAddress: 'F9Lw3ki3hJ7PF9HQXsBzoY8GyE6sPoEZZdXJBsTTD2rk',
-        page: 1,
-        limit: null,
-        before: null,
-        after: null,
-        
+        id: 'B1rzqj4cEM6pWsrm3rLPCu8QwcXMn6H6bd7xAnk941dU',
       },
     }),
   });
+
   const { result } = await response.json();
-  console.log("Asset: ", result);
-  
+  console.log("asset: ", result);
 };
+
 getAsset();

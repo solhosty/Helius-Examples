@@ -1,18 +1,61 @@
-const axios = require('axios')
-const url = `https://rpc-devnet.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412`
+const url = `https://icarus.helius.xyz/?api-key=98db8a8f-a355-4d5d-9217-bb846fa10192`;
+const fs = require('fs');
+const uniqueOwners = new Set();
 
 const getAssetsByGroup = async () => {
-    const { data } = await axios.post(url, {
-      "jsonrpc": "2.0",
-      "id": "my-id",
-      "method": "getAssetsByGroup",
-      "params": {
-          "groupKey": "collection",
-          "groupValue": "5vkfdUg1gz4grB93t17jNx6xVEp6QFrHia2paVeKNyXi",
-          "page": 1,
-          "limit": 1000
-      }
+  let page = 1;
+  let hasMoreResults = true;
+
+  while (hasMoreResults) {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 'my-id',
+        method: 'getAssetsByGroup',
+        params: {
+          groupKey: 'collection',
+          groupValue: 'SMBtHCCC6RYRutFEPb4gZqeBLUZbMNhRKaMKZZLHi7W',
+          page,
+          limit: 1000,
+        },
+      }),
     });
-    console.log(data.result.items[0].content.metadata)
+
+    const { result } = await response.json();
+
+    // Add each owner to the Set, automatically discarding duplicates
+    result.items.forEach(item => uniqueOwners.add(item.ownership.owner));
+
+    if (result.items.length < 1000) {
+      hasMoreResults = false;
+    } else {
+      page++;
+    }
+  }
+
+  // Convert Set to Array for stringification
+  const uniqueOwnersArray = Array.from(uniqueOwners);
+  
+  const root = {
+    count: uniqueOwners.size,
+    owners: uniqueOwnersArray
   };
+  
+  const jsonResult = JSON.stringify(root, null, 2);
+
+  fs.writeFile('./ownerResults.json', jsonResult, 'utf8', (err) => {
+    if (err) {
+      console.error("Error writing JSON file:", err);
+    } else {
+      console.log("JSON file saved successfully.");
+    }
+  });
+  console.log("Total number of unique owners:", uniqueOwners.size);
+
+};
+
 getAssetsByGroup();
