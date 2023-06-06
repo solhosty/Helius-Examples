@@ -1,4 +1,5 @@
-const url = `https://icarus.helius.xyz/?api-key=98db8a8f-a355-4d5d-9217-bb846fa10192`;
+const env = require('./env-config.js');
+const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
 const fs = require('fs');
 const uniqueOwners = new Set();
 

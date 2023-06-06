@@ -1,4 +1,5 @@
-const url = 'https://api.helius.xyz/v1/nft-events?api-key=<your_key_here>';
+const env = require('./env-config.js');
+const url = `https://api.helius.xyz/v1/nft-events?api-key=${env.HELIUS_API_KEY}`;
 
 const getAllNftEvents = async () => {
   const events = [];

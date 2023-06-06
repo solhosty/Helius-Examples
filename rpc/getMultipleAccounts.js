@@ -1,4 +1,5 @@
-const url = 'https://rpc.helius.xyz/?api-key=db89bbee-9da7-4844-8aa6-8840d7aa8c27';
+const env = require('./env-config.js');
+const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
 
 const getMultipleAccounts = async () => {
   try {

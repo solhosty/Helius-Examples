@@ -1,4 +1,5 @@
-const url = `https://api.helius.xyz/v1/active-listings?api-key=<api_key>`;
+const env = require('./env-config.js');
+const url = `https://api.helius.xyz/v1/active-listings?api-key=${env.HELIUS_API_KEY}`;
 
 const getActiveListings = async () => {
   const response = await fetch(url, {

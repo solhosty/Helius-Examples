@@ -1,4 +1,5 @@
-const url = `https://api.helius.xyz/v1/mintlist?api-key=<api_key>`;
+const env = require('./env-config.js');
+const url = `https://api.helius.xyz/v1/mintlist?api-key=${env.HELIUS_API_KEY}`;
 
 const getMintlist = async () => {
   const response = await fetch(url, {

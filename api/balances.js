@@ -1,4 +1,5 @@
-const url = "https://api.helius.xyz/v0/addresses/<address>/balances?api-key=<your-key>";
+const env = require('./env-config.js');
+const url = `https://api.helius.xyz/v0/addresses/<address>/balances?api-key=${env.HELIUS_API_KEY}`;
 
 const getBalances = async () => {
   try {

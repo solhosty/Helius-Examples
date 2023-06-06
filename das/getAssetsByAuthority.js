@@ -1,6 +1,6 @@
 const fs = require('fs');
-
-const url = `https://icarus.helius.xyz/?api-key=11620a64-313a-47e1-b199-67d9a3b4b0d8`;
+const env = require('./env-config.js');
+const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
 const totalResults = [];
 
 const getAssetsByAuthority = async () => {
