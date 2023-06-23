@@ -1,5 +1,4 @@
-const env = require('./env-config.js');
-const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
+const url = `https://rpc.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
 const fs = require('fs');
 const uniqueOwners = new Set();
 
@@ -19,7 +18,7 @@ const getAssetsByGroup = async () => {
         method: 'getAssetsByGroup',
         params: {
           groupKey: 'collection',
-          groupValue: 'SMBtHCCC6RYRutFEPb4gZqeBLUZbMNhRKaMKZZLHi7W',
+          groupValue: '4fFmLR5F6tWuJMZNM3sQebu5swtjvu35A8KXGVPcS1Ut',
           page,
           limit: 1000,
         },
@@ -29,7 +28,7 @@ const getAssetsByGroup = async () => {
     const { result } = await response.json();
 
     // Add each owner to the Set, automatically discarding duplicates
-    result.items.forEach(item => uniqueOwners.add(item.ownership.owner));
+    result.items.forEach(item => uniqueOwners.add(item.id));
 
     if (result.items.length < 1000) {
       hasMoreResults = false;
@@ -48,7 +47,7 @@ const getAssetsByGroup = async () => {
   
   const jsonResult = JSON.stringify(root, null, 2);
 
-  fs.writeFile('./ownerResults.json', jsonResult, 'utf8', (err) => {
+  fs.writeFile('./mintList.json', jsonResult, 'utf8', (err) => {
     if (err) {
       console.error("Error writing JSON file:", err);
     } else {

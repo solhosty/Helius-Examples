@@ -1,27 +1,21 @@
-const createWebhook = async () => {
-    try {
-      const response = await fetch(
-        "https://api.helius.xyz/v0/webhooks?api-key=<PASTE YOUR API KEY HERE>",
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            webhookURL: "https://your-webhook-server.com/your-endpoint",
-            accountAddresses: ["PASTE A SOLANA ACCOUNT ADDRESS HERE"],
-            accountAddressOwners: [],
-            webhookType: "account",
-          }),
-        }
-      );
-  
-      const data = await response.json();
-      console.log({ data });
-    } catch (e) {
-      console.error("error", e);
-    }
-  };
-  
-  createWebhook();
-  
+const editWebhook = async () => {
+  try {
+    const response = await fetch(
+      "https://api.helius.xyz/v0/webhooks/?api-key=8bb81828-2b6b-422e-8272-8ac173443412",
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+       
+       
+      }
+    );
+    const data = await response.json();
+    console.log({ data });
+    console.log(data.transactionTypes)
+  } catch (e) {
+    console.error("error", e);
+  }
+};
+editWebhook();

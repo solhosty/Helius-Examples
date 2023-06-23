@@ -1,5 +1,4 @@
-const env = require('./env-config.js');
-const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
+const url = `https://rpc.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
 const fs = require('fs');
 
 const getAssetsByOwner = async () => {
@@ -28,6 +27,7 @@ const getAssetsByOwner = async () => {
       id: result.items[i].id,
       name: result.items[i].content.metadata.name,
       json_uri: result.items[i].content.json_uri,
+      owner: result.items[i].ownership
     };
 
     if (groupedResults.hasOwnProperty(ownerAddress)) {

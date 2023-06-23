@@ -1,0 +1,24 @@
+{
+    "name": "Helius cNFT",
+    "symbol": "HCNFT",
+    "description": "Here is an example of a cNFT minted!",
+    "seller_fee_basis_points": 0,
+    "image": "https://shdw-drive.genesysgo.net/6Fa2KeESv6LWVRJ9R1ZUytpxXSKzdNWD11whikCSfYAR/helius-orange.png",
+    "properties": {
+        "category": "image",
+        "creators": [
+        ],
+        "files": [
+            {
+                "uri": "https://shdw-drive.genesysgo.net/6Fa2KeESv6LWVRJ9R1ZUytpxXSKzdNWD11whikCSfYAR/helius-orange.png",
+                "type": "image/png"
+            }
+        ]
+    },
+    "attributes": [
+        {
+            "trait_type": "cNFT",
+            "value": "Yes"
+        }
+    ]
+}

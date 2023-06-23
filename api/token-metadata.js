@@ -1,5 +1,4 @@
-const env = require('./env-config.js');
-const url = `https://api.helius.xyz/v0/token-metadata?api-key=${env.HELIUS_API_KEY}`
+const url = `https://api.helius.xyz/v0/token-metadata?api-key=8bb81828-2b6b-422e-8272-8ac173443412`
 const nftAddresses = [
   "EFsxgAC1kyE1MWMDHuctCwogfiRUny8jLQaLnsCKDJFq"
 ]; // Monkes

@@ -1,5 +1,5 @@
 const BASE_URL = 'https://api.helius.xyz';
-const API_KEY = 'your-key-here';
+const API_KEY = '8bb81828-2b6b-422e-8272-8ac173443412';
 const COLLECTION_ADDRESS = '6XxjKYFbcndh2gDcsUrmZgVEsoDxXMnfsaGY6fpTJzNr'; // DeGods
 
 const createCollectionWebhook = async () => {

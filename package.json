@@ -20,7 +20,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@solana/spl-token": "^0.3.8",
+    "@solana/web3.js": "^1.77.3",
     "axios": "^1.4.0",
-    "dotenv": "^16.1.4"
+    "bs58": "^5.0.0",
+    "dotenv": "^16.1.4",
+    "helius-sdk": "^1.0.8"
   }
 }

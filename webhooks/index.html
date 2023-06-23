@@ -1,0 +1,23 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const button = document.querySelector(".copy-url-button");
+      if (button) {
+        button.setAttribute("data-clipboard-text", window.location.href);
+        button.addEventListener("click", function() {
+          const textToCopy = button.getAttribute("data-clipboard-text");
+          const textArea = document.createElement("textarea");
+          textArea.value = textToCopy;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+          // Display a message or change the button text to indicate the URL has been copied.
+          button.innerText = "URL Copied!";
+          setTimeout(() => {
+            button.innerText = "Copy link";
+          }, 2000);
+        });
+      }
+    });
+    </script>
+    

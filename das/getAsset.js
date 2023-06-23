@@ -1,5 +1,4 @@
-const env = require('./env-config.js');
-const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
+const url = `https://rpc.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
 
 const getAsset = async () => {
   const response = await fetch(url, {
@@ -12,13 +11,11 @@ const getAsset = async () => {
       id: 'my-id',
       method: 'getAsset',
       params: {
-        id: 'B1rzqj4cEM6pWsrm3rLPCu8QwcXMn6H6bd7xAnk941dU',
+        id: '6m82p33tce8GYMnbKhdGDGHjCNofS5csXmqjHt65kp4g'
       },
     }),
   });
-
   const { result } = await response.json();
-  console.log("asset: ", result);
+  console.log("Asset: ", result);
 };
-
 getAsset();

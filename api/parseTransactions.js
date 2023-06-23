@@ -1,10 +1,9 @@
-const env = require('./env-config.js');
-const url = `https://api.helius.xyz/v0/addresses/M2mx93ekt1fmXSVkTrUL9xVFHkmME8HTUi5Cyc5aF7K/transactions?api-key=${env.HELIUS_API_KEY}}`
+const url = `https://api.helius.xyz/v0/addresses/tS2srkdCZeqnzrFt25PbBFg4KoVJB4WtPUJnVidsY4p/transactions?api-key=8bb81828-2b6b-422e-8272-8ac173443412`
 
 const parseTransactions = async () => {
   const response = await fetch(url);
   const data = await response.json();
-  console.log("parsed transactions: ", data);
+  console.log("tensor transactions: ", data);
 };
 
 parseTransactions();
