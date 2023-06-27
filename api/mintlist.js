@@ -1,4 +1,6 @@
-const url = `https://api.helius.xyz/v1/mintlist?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://api.helius.xyz/v1/mintlist?api-key=${apiKey}`;
 
 const getMintlist = async () => {
   const response = await fetch(url, {

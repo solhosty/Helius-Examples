@@ -1,5 +1,6 @@
-const env = require('./env-config.js');
-const url = `https://rpc.helius.xyz/?api-key=${env.HELIUS_API_KEY}`;
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://rpc.helius.xyz/?api-key=${apiKey}`;
 const fs = require('fs');
 
 const searchAssets = async () => {
@@ -14,19 +15,20 @@ const searchAssets = async () => {
       method: "searchAssets",
       params: {
         // Returning only compressed items.
-        compressed: true,
+      
         // Example wallet
-        ownerAddress: "2k5AXX4guW9XwRQ1AKCpAuUqgWDpQpwFfpVFh3hnm2Ha",
+        burnt: true,
         // Drip Haus collection ID.
         grouping: [
           "collection",
-          "DRiP2Pn2K6fuMLKQmt5rZWyHiUZ6WK3GChEySUpHSS4x"
+          "SMBtHCCC6RYRutFEPb4gZqeBLUZbMNhRKaMKZZLHi7W"
         ],
         page: 1,
       },
     }),
   });
   const { result } = await response.json();
+  console.log(result)
 
   const groupedResults = [];
 

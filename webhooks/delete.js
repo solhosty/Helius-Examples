@@ -1,7 +1,11 @@
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+
+
 const deleteWebhook = async () => {
     try {
       const response = await fetch(
-        "https://api.helius.xyz/v0/webhooks/<webhook-id>?api-key=8bb81828-2b6b-422e-8272-8ac173443412",
+        `https://api.helius.xyz/v0/webhooks/<webhook-id>?api-key=${apiKey}`,
         {
           method: 'DELETE',
           headers: {

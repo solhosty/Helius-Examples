@@ -1,6 +1,9 @@
-const url = `https://api.helius.xyz/v0/token-metadata?api-key=8bb81828-2b6b-422e-8272-8ac173443412`
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://api.helius.xyz/v0/token-metadata?api-key=${apiKey}`
+
 const nftAddresses = [
-  "EFsxgAC1kyE1MWMDHuctCwogfiRUny8jLQaLnsCKDJFq"
+  "DEVaumiRCw6USFwjL3kdn47Ubenpsu4iZjeDVrHznwqK"
 ]; // Monkes
 
 const getMetadata = async () => {

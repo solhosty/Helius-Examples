@@ -1,19 +1,20 @@
 import { Keypair, Transaction, Connection, PublicKey } from "@solana/web3.js";
 import { createTransferCheckedInstruction, getAssociatedTokenAddress } from "@solana/spl-token";
 import * as bs58 from "bs58";
+const apiKey = require('dotenv')
 
 async function transfer() {
   // connection to Solana. 
-const connection = new Connection("https://rpc.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412");
+const connection = new Connection(`https://rpc.helius.xyz/?api-key=${apiKey}`);
 
 // Payer of new ATA. 
 const feePayer = Keypair.fromSecretKey(
-  bs58.decode("4yvk7MbPc8k1wdqGnBZEXUG2Cegg79FZBLAA1s5U6uwCp9gXMhPKZaT1nTgXvbCDcg9j9BhDwxkUfkZUDchJoq7K")
+  bs58.decode("SK")
 );
 
 // Previous owner of Token or NFT
 const prevOwner = Keypair.fromSecretKey(
-  bs58.decode("2x4Fif9famabHBNy1fVtePt7XEnsGMRDNnzTYFW55nUpGco9VMx35zRaYPvamFm2vrZetWnvTLb5upGMSbEwdrA8")
+  bs58.decode("SK")
 );
 const mintPubkey = new PublicKey("4umMdShNxbdnoV2EZjUp6h5GYYneZFLH9otBEU2K3ZYP");
 const receiveAdress = new PublicKey('2xSHLfiPs3aEhzbLnYbyzWYMEaYnwSwJwAnVh5CwHWwX')

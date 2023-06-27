@@ -1,4 +1,7 @@
-const url = `https://api.helius.xyz/v0/addresses/tS2srkdCZeqnzrFt25PbBFg4KoVJB4WtPUJnVidsY4p/transactions?api-key=8bb81828-2b6b-422e-8272-8ac173443412`
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+
+const url = `https://api.helius.xyz/v0/addresses/41zCUJsKk6cMB94DDtm99qWmyMZfp4GkAhhuz4xTwePu/transactions?api-key=${apiKey}`
 
 const parseTransactions = async () => {
   const response = await fetch(url);

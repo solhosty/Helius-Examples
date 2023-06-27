@@ -1,15 +1,19 @@
-const url = `https://api.helius.xyz/v0/addresses/5Axu9WgHfd32eJQf99ZTfL6p62ZwxH9dAhGMWfMG7LsE/nfts?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://api.helius.xyz/v0/addresses/41zCUJsKk6cMB94DDtm99qWmyMZfp4GkAhhuz4xTwePu/balances?api-key=${apiKey}`;
 
 const getBalances = async () => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
+      console.log(response)
       throw new Error('Network response was not ok');
+      
     }
     const data = await response.json();
     console.log("balances: ", data);
   } catch (error) {
-    console.error(error);
+    console.error(response);
   }
 };
 getBalances();

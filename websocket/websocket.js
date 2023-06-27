@@ -1,6 +1,7 @@
 const solanaWeb3 = require('@solana/web3.js')
-
-const connection = new solanaWeb3.Connection("https://rpc.helius.xyz?api-key=8bb81828-2b6b-422e-8272-8ac173443412");
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const connection = new solanaWeb3.Connection(`https://rpc.helius.xyz?api-key=${apiKey}`);
 
 (async () => {
   connection.onAccountChange(

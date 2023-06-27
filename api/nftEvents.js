@@ -1,4 +1,6 @@
-const url = `https://api.helius.xyz/v1/nft-events?api-key=db89bbee-9da7-4844-8aa6-8840d7aa8c27`;
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://api.helius.xyz/v1/nft-events?api-key=${apiKey}`;
 
 const getNftEvents = async () => {
   try {
@@ -9,7 +11,7 @@ const getNftEvents = async () => {
       },
       body: JSON.stringify({
         query: {
-          accounts: ["GhDQkscnh72wCW4tGFHnNpBwSUgiLbHaqZW8wJrrXeVV"],
+          accounts: ["DEVaumiRCw6USFwjL3kdn47Ubenpsu4iZjeDVrHznwqK"],
         }
       })
     });
@@ -19,7 +21,7 @@ const getNftEvents = async () => {
     }
 
     const data = await response.json();
-    console.log("events: ", data.result[0]);
+    console.log("events: ", data.result);
   } catch (error) {
     console.error(error);
   }

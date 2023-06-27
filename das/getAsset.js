@@ -1,4 +1,6 @@
-const url = `https://rpc.helius.xyz/?api-key=8bb81828-2b6b-422e-8272-8ac173443412`;
+require('dotenv').config();
+const apiKey = process.env.HELIUS_API_KEY;
+const url = `https://rpc.helius.xyz/?api-key=${apiKey}`;
 
 const getAsset = async () => {
   const response = await fetch(url, {
@@ -11,7 +13,7 @@ const getAsset = async () => {
       id: 'my-id',
       method: 'getAsset',
       params: {
-        id: '6m82p33tce8GYMnbKhdGDGHjCNofS5csXmqjHt65kp4g'
+        id: '8LFoSTjwGjUtuf2aGnGHspC26nYZ8pScysiK8Y7DBqjD'
       },
     }),
   });
