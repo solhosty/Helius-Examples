@@ -1,9 +1,9 @@
-Helius Examples - Setup Guide
+##Helius Examples - Setup Guide
 
-Prerequisites
+##Prerequisites
 You'll need to have git installed to clone this repository. You'll also need Node.js (which comes with npm) installed on your computer to download the necessary packages.
 
-Steps to Install
+##Steps to Install
 Clone the Helius Examples repository. Open your terminal and run the following command:
 
 git clone https://github.com/solhosty/Helius-Examples.git
